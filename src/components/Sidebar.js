@@ -7,9 +7,36 @@ import { links } from '../utils/constants'
 import styled from 'styled-components'
 import CartButtons from './CartButtons'
 import { useUserContext } from '../context/user_context'
+// import Sidebar from './Sidebar';
 
 const Sidebar = () => {
-  return <h4>sidebar</h4>
+  const isOpen = false
+
+  return (
+    <SidebarContainer>
+      <aside className={`${isOpen ? 'sidebar show-sidebar ' : 'sidebar'}`}>
+        <div className="sidebar-header">
+          <img src={logo} alt="comfy sloth" className="logo" />
+          <button className="close-btn" type="button">
+            {' '}
+            <FaTimes />{' '}
+          </button>
+        </div>
+        <ul>
+          {links.map((link) => {
+            const { id, url, text } = link
+            return (
+              <li key={id}>
+                <Link to={url}>{text}</Link>
+              </li>
+            )
+          })}
+        </ul>
+        <Link to="checkout">Checkout</Link>
+        <CartButtons />
+      </aside>
+    </SidebarContainer>
+  )
 }
 
 const SidebarContainer = styled.div`
