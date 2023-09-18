@@ -8,17 +8,20 @@ import CartButtons from './CartButtons'
 import { useProductsContext } from '../context/products_context'
 import { useUserContext } from '../context/user_context'
 
-const Nav = () => {
+const Nav = () =>
+{
+  const { openSidebar,closeSidebar } = useProductsContext();
+
   return <NavContainer>
     
     <div className="nav-center">
 
         <div className="nav-header">
-          <Link to='/'>
+          <Link to='/' onClick={closeSidebar}>
             <img src={logo} alt="logo" />
         </Link>
 
-        <button className="nav-toggle">
+        <button className="nav-toggle" onClick={openSidebar} >
         <FaBars/>
       </button>
       </div>

@@ -5,11 +5,25 @@ import heroBcg from '../assets/hero-bcg.jpeg'
 import heroBcg2 from '../assets/hero-bcg-2.jpeg'
 
 const Hero = () => {
-  return <h4>hero</h4>
+  return <Wrapper className='section-center'>
+    <article className="content">
+      <h1>design your <br />
+      comfort zone
+      </h1>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo illo expedita porro ut quidem sequi, facilis a, eos quae ducimus quod eum, labore architecto? Eum tempora quia temporibus cupiditate nihil!</p>
+      <Link to='/products' className='btn hero-btn'>
+        shop now
+      </Link>
+    </article>
+    <article className='img-container'>
+      <img src={heroBcg}  alt="heroBcg" className='main-img'/>
+      <img src={heroBcg2}  alt="heroBcg" className='accent-img'/>
+    </article>
+  </Wrapper>
 }
 
 const Wrapper = styled.section`
-  min-height: 60vh;
+  min-height: 50vh;
   display: grid;
   place-items: center;
   .img-container {
@@ -43,7 +57,7 @@ const Wrapper = styled.section`
     }
     .main-img {
       width: 100%;
-      height: 550px;
+      height: 400px;
       position: relative;
       border-radius: var(--radius);
       display: block;
@@ -52,9 +66,10 @@ const Wrapper = styled.section`
     .accent-img {
       position: absolute;
       bottom: 0;
-      left: 0;
-      width: 250px;
+      left: -20%;
+      width: 200px;
       transform: translateX(-50%);
+      transform: translateY(30%);
       border-radius: var(--radius);
     }
     .img-container::before {
