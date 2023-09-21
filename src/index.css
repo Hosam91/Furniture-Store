@@ -204,17 +204,3 @@ p {
 .page {
   min-height: calc(100vh - (20vh + 10rem));
 }
-
-
-@media screen and (max-width: 440px) {
-  section ,div,body {
-    width: 100%!important;
-    margin: auto;
-    padding: .4rem;
-    object-fit: contain;
-  }
-  *{
-    /* overflow: hidden; */
-  }
-  
-}

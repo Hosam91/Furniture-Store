@@ -15,20 +15,83 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
 const SingleProductPage = () => {
-  return <h4>single product page</h4>
+  const {
+    fetchSingleProduct,
+    single_product_loading: loading,
+    single_product_error: error,
+    single_product: product,
+  } = useProductsContext()
+
+  const { id } = useParams()
+
+  useEffect(() => {
+    fetchSingleProduct(`${url}${id}`)
+  }, [id])
+
+  if (loading) {
+    return <Loading />
+  }
+  if (error) {
+    return (
+      <>
+        <Error />
+        <div className="text-center">
+          <Link to="/" className="btn text-center">
+            {' '}
+            go back Home
+          </Link>
+        </div>
+      </>
+    )
+  }
+
+  const {name,  stock, price, description, stars, reviews, company, images ,id: sku} = product;
+
+
+  return <Wrapper>
+    <PageHero title={name} product /> 
+    <div className="section section-center page">
+      <Link className='btn' to='/products'>back to products</Link>
+      <div className="product-center">
+        <ProductImages images={ images} />
+        <section className="content">
+          <h2>{name}</h2>
+          <Stars stars={ stars} reviews={reviews} />
+          <h5 className='price'>{formatPrice(price)}</h5>
+          <p className='desc'> {description }</p>
+          <p className='info'>
+            <span>Avilable : </span>
+            {stock > 0 ?'In stock' : 'out of stock'}
+          </p>
+          <p className='info'>
+            <span>SKU : </span>
+            {sku}
+          </p>
+          <p className='info'>
+            <span>Brand : </span>
+            {company}
+          </p>
+          <hr />
+          {stock > 0 && <AddToCart product={ product} />}
+        </section>
+      </div>
+    </div>
+  
+  
+  </Wrapper>
 }
 
 const Wrapper = styled.main`
   .product-center {
     display: grid;
-    gap: 4rem;
-    margin-top: 2rem;
+    gap: 3rem;
+    margin-top: 1.5rem;
   }
   .price {
     color: var(--clr-primary-5);
   }
   .desc {
-    line-height: 2;
+    line-height: 1.5;
     max-width: 45em;
   }
   .info {
@@ -47,9 +110,37 @@ const Wrapper = styled.main`
       align-items: center;
     }
     .price {
+      font-size: 1rem;
+    }
+  }
+  @media (max-width: 450px) {
+    .product-center {
+     display:flex
+      align-items: center;
+      width:100%;
+      flex-wrap:wrap;
+
+    }
+    .product-center >div{
+      // width:50%;
+    }
+    .content{
+      width:100%
+
+    }
+    .price {
       font-size: 1.25rem;
+    }
+    .info{
+      max-width:60%;
+      padding: 0;
+      gap:.5rem
+    }
+    .info span {
+      margin-right:0;
     }
   }
 `
+
 
 export default SingleProductPage
