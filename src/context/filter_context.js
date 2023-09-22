@@ -12,13 +12,33 @@ import {
 } from '../actions'
 import { useProductsContext } from './products_context'
 
-const initialState = {}
+const initialState = {
+  filtered_products: [],
+  all_Products: [],
+  grid_view: true,
+  list_view : false,
+}
 
 const FilterContext = React.createContext()
 
-export const FilterProvider = ({ children }) => {
+export const FilterProvider = ({ children }) =>
+{
+  const { products }= useProductsContext();
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  const setGridView = () => {
+      dispatch({type: SET_GRIDVIEW})
+  }
+  const setListView = () => {
+      dispatch({type: SET_LISTVIEW})
+  }
+  
+  useEffect(() =>
+  {
+    dispatch({type:LOAD_PRODUCTS,payload:products})
+  },[products])
   return (
-    <FilterContext.Provider value='filter context'>
+    <FilterContext.Provider value={{...state,setGridView,setListView}}>
       {children}
     </FilterContext.Provider>
   )
