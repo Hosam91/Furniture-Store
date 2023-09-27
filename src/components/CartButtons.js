@@ -6,23 +6,40 @@ import { useProductsContext } from '../context/products_context'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
-const CartButtons = () =>
-{
-  const { cart } = useCartContext();
-  const { closeSidebar } = useProductsContext();
-  return <Wrapper className='cart-btn-wrapper' >
-    <Link className="cart-btn" to='cart' onClick={closeSidebar}>
-    Cart
-      <span className="cart-container">
-        <FaShoppingCart/> 
-        <span className='cart-value'>{cart.length}</span> 
-      </span>
-</Link>
-    <button className="auth-btn" type='button' onClick={closeSidebar}>
-      Login <FaUserPlus/>
-</button>
-
-  </Wrapper>
+const CartButtons = () => {
+  const {
+    loginWithRedirect,
+    logout,
+    myUser,
+    isAuthenticated,
+    isLoading,
+  } = useUserContext()
+  const { total_items } = useCartContext()
+  const { closeSidebar } = useProductsContext()
+  return (
+    <Wrapper className="cart-btn-wrapper">
+      <Link className="cart-btn" to="cart" onClick={closeSidebar}>
+        Cart
+        <span className="cart-container">
+          <FaShoppingCart />
+          <span className="cart-value">{total_items}</span>
+        </span>
+      </Link>
+      {myUser ? (
+        <button
+          className="auth-btn"
+          type="button"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          logout <FaUserMinus />
+        </button>
+      ) : (
+        <button className="auth-btn" type="button" onClick={loginWithRedirect}>
+          Login <FaUserPlus />
+        </button>
+      )}
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
