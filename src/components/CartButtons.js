@@ -6,7 +6,8 @@ import { useProductsContext } from '../context/products_context'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
-const CartButtons = () => {
+const CartButtons = () =>
+{
   const {
     loginWithRedirect,
     logout,
@@ -14,6 +15,9 @@ const CartButtons = () => {
     isAuthenticated,
     isLoading,
   } = useUserContext()
+
+  console.log(myUser);
+
   const { total_items } = useCartContext()
   const { closeSidebar } = useProductsContext()
   return (

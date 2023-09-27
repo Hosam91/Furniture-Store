@@ -55,6 +55,7 @@ export const CartProvider = ({ children }) =>
   {
     dispatch({type:CLEAR_CART})
   }
+ 
 
   useEffect(() =>
   {
