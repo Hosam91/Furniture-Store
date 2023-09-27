@@ -16,7 +16,6 @@ const CartButtons = () =>
     isLoading,
   } = useUserContext()
 
-  console.log(myUser);
 
   const { total_items } = useCartContext()
   const { closeSidebar } = useProductsContext()

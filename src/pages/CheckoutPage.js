@@ -34,14 +34,12 @@ const CheckoutPage = () =>
     {
       clearCart()
       setSucces(true)
-      console.log(succes);
 
     }
     if (total_amount === 0)
     {
       // clearCart()
       setSucces(false)
-      console.log(succes);
 
     }
   
