@@ -1,7 +1,5 @@
 {
-  "homepage": "https://Hosam91.github.io/Furniture-Store/",
   "name": "comfy",
-
   "version": "0.1.0",
   "private": true,
   "dependencies": {
