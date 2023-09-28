@@ -1,9 +1,9 @@
 import React from 'react'
-import { useAuth0 } from '@auth0/auth0-react'
+// import { useAuth0 } from '@auth0/auth0-react'
 import styled from 'styled-components'
 
 const AuthWrapper = () => {
-  return <h4>AuthWrapper Component</h4>
+  return <Wrapper>AuthWrapper Component</Wrapper>
 }
 
 const Wrapper = styled.section`

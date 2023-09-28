@@ -81,6 +81,7 @@ const cart_reducer = (state, action) => {
       {
         return item
       }
+      return item
     })
     return {
       ...state, cart: tempCart
@@ -109,7 +110,6 @@ const cart_reducer = (state, action) => {
 
 
   return state
-  throw new Error(`No Matching "${action.type}" - action type`)
 }
 
 export default cart_reducer

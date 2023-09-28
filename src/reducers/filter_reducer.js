@@ -90,12 +90,10 @@ const filter_reducer = (state, action) => {
           category,
           company,
           color,
-          min_price,
           price,
-          max_price,
           shipping } = state.filters
         
-        let tempProducts = [... all_Products]
+        let tempProducts = [...all_Products]
   //       console.log( all_Products);
         if (text)
         {
@@ -160,7 +158,6 @@ const filter_reducer = (state, action) => {
   }
 
   return state
-  throw new Error(`No Matching "${action.type}" - action type`)
 }
 
 export default filter_reducer

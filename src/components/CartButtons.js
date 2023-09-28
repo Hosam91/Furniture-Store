@@ -12,8 +12,7 @@ const CartButtons = () =>
     loginWithRedirect,
     logout,
     myUser,
-    isAuthenticated,
-    isLoading,
+   
   } = useUserContext()
 
 

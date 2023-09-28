@@ -5,7 +5,6 @@ import
   {
     About,
     Cart,
-    AuthWrapper,
     Checkout,
     Error,
     Home,
