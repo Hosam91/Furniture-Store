@@ -20,4 +20,8 @@ Search for specific products
 Filter products by company
 Filter products by category
 Filter products by price range
+<<<<<<< HEAD
 Sort products by price & name
+=======
+Sort products by price & name
+>>>>>>> d293c25323f846fe705de41126945b7159ac1804
